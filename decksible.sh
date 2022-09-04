@@ -64,6 +64,7 @@ echo "---
           - io.github.phillipk.boilr
           - com.bitwarden.desktop
         state: present
+        method: user
 " > install-flatpaks.yml
 
 echo "---
@@ -73,7 +74,7 @@ echo "---
 
   tasks:
     - name: Run command to install Deckbrew
-      command: curl -L https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh | sh
+      command: \"curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sh\"
 " > install-deckbrew.yml
 
 
