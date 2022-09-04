@@ -35,7 +35,8 @@ mkdir "${rsyncdir}"
 mkdir -p "${workingdir}/collections"
 cd "$workingdir" || exit
 
-export PATH=/home/deck/.local/bin/:$PATH
+echo "export PATH=/home/deck/.local/bin/:$PATH" >> ~/.bash_profile
+source ~/.bash_profile
 
 echo "[defaults]
 collections_paths = ./collections/
@@ -93,4 +94,3 @@ echo "
 ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml --ask-become-pass
 # ansible-playbook install-deckbrew.yml --ask-become-pass
-
