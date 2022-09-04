@@ -69,6 +69,13 @@ echo "
       state: present
       method: user
       remote: flathub
+    - name: Installing Others
+    community.general.flatpak:
+      name: 
+        - net.davidotek.pupgui2
+      state: present
+      method: user
+      remote: flathub
   " > install-flatpaks.yml
 
   echo "---
