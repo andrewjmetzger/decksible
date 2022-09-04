@@ -18,14 +18,12 @@
 # 3. Type the same password 'deck' again, press enter
 ################################################################################
 
-
 ## VARIABLES ###################################################################
 # SD Card Path under /run/media (usually mmcblk0p1)
 sdcard="/run/media/mmcblk0p1"
 rsyncdir="${sdcard}/rsync-backups"
 workingdir="${sdcard}/playbooks/software-installs"
 ################################################################################
-
 
 # Ansible
 echo -e "Installing Ansible"
@@ -41,13 +39,13 @@ export PATH=/home/deck/.local/bin/:$PATH
 
 echo "[defaults]
 collections_paths = ./collections/
-" > ansible.cfg
+" >ansible.cfg
 
 echo "---
 collections:
   - name: community.general
     version: 4.8.1
-" > requirements.yml
+" >requirements.yml
 
 echo "---
 - name: Add the flathub flatpak repository remote to the user installation
@@ -68,11 +66,11 @@ echo "---
           - com.github.tchx84.Flatseal
           - net.davidotek.pupgui2
           - net.lutris.lutris
-      - io.github.phillipk.boilr
-      - com.bitwarden.desktop
+          - io.github.phillipk.boilr
+          - com.bitwarden.desktop
         state: present
-    method: user
-    remote: flathub
+       method: user
+      remote: flathub
 " > install-flatpaks.yml
 
 echo "---
@@ -83,8 +81,7 @@ echo "---
   tasks:
     - name: Run command to install Deckbrew
     command: \"curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sh\"
-" > install-deckbrew.yml
-
+" >install-deckbrew.yml
 
 ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml
