@@ -78,21 +78,21 @@ echo "
       remote: flathub
   " > install-flatpaks.yml
 
-  echo "
-  ---
-  - name: Install Deckbrew
-    hosts: localhost
-    gather_facts: no
+echo "
+---
+- name: Install Deckbrew
+  hosts: localhost
+  gather_facts: no
 
-    tasks:
-    - name: Download Beta Installer
-      get_url:
-        url: \"https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh\"
-        dest: ./install_prerelease.sh
-    
-    - name: Run Beta Installer
-      shell: ./install_prerelease.sh
-      become: yes
+  tasks:
+  - name: Download Beta Installer
+    get_url:
+      url: \"https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh\"
+      dest: ./install_prerelease.sh
+  
+  - name: Run Beta Installer
+    shell: ./install_prerelease.sh
+    become: yes
 
 " > install-deckbrew.yml
 
