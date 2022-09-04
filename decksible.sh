@@ -30,8 +30,8 @@ workingdir="${sdcard}/playbooks/software-installs"
 # Ansible
 echo -e "Installing Ansible"
 
-python3 -m ensurepip --update          # same command will update pip later on
-~/.local/bin/pip3 install ansible-core # we only need the basics
+python -m ensurepip --update          # same command will update pip later on
+~/.local/bin/pip install ansible-core # we only need the basics
 
 mkdir "${rsyncdir}"
 mkdir -p "${workingdir}/collections"
