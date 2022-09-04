@@ -69,7 +69,7 @@ echo "
       state: present
       method: user
       remote: flathub
-    - name: Installing Others
+  - name: Installing Others
     community.general.flatpak:
       name: 
         - net.davidotek.pupgui2
