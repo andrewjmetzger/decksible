@@ -69,8 +69,8 @@ echo "---
           - io.github.phillipk.boilr
           - com.bitwarden.desktop
         state: present
-       method: user
-      remote: flathub
+        method: user
+       remote: flathub
 " > install-flatpaks.yml
 
 echo "---
@@ -88,3 +88,5 @@ ansible-playbook install-flatpaks.yml
 # ansible-playbook install-deckbrew.yml
 
 curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sh
+
+
