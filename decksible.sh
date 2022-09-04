@@ -60,7 +60,7 @@ echo "
       flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
       state: present
       method: user
-
+  
   - name: Installing Flatseal
     community.general.flatpak:
       name: 
@@ -69,10 +69,12 @@ echo "
       state: present
       method: user
       remote: flathub
-  - name: Installing Others
+  - name: Installing Other Flatpaks
     community.general.flatpak:
-      name: 
+      name:
         - net.davidotek.pupgui2
+        - net.lutris.lutris
+        - io.github.phillipk.boilr
       state: present
       method: user
       remote: flathub
