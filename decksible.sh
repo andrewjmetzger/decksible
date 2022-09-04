@@ -57,25 +57,20 @@ echo "
   - name: Add the flathub flatpak repository remote to the user installation
     community.general.flatpak_remote:
       name: flathub
-      state: present
       flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      state: present
       method: user
 
-  - name: installing flatpak list
+  - name: Installing Flatseal
     community.general.flatpak:
-    name:
-      - com.github.tchx84.Flatseal
-      - net.davidotek.pupgui2
-      - net.lutris.lutris
-      - io.github.phillipk.boilr
-      - com.bitwarden.desktop
-    state: present
-    method: user
-    remote: flathub
-" > install-flatpaks.yml
+      name: com.github.tchx84.Flatseal
+      state: present
+      method: user
+      remote: flathub
+  " > install-flatpaks.yml
 
-echo "---
-- name: Install Deckbrew Beta
+  echo "---
+  - name: Install Deckbrew Beta
   hosts: localhost
   gather_facts: no
 
@@ -88,4 +83,6 @@ ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml
 # ansible-playbook install-deckbrew.yml
 
-# curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sh
+curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sh
+
+
