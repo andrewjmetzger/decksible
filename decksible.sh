@@ -89,6 +89,7 @@ echo "
     get_url:
       url: \"https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh\"
       dest: ./install_prerelease.sh
+      mode: u+rwx
   
   - name: Run Beta Installer
     shell: ./install_prerelease.sh
