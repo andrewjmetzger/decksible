@@ -85,7 +85,8 @@ echo "
 
     tasks:
     - name: Run shell command to install Deckbrew
-      shell: curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sudo sh
+      become: yes
+      shell: curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sh
 " > install-deckbrew.yml
 
 ansible-galaxy install -r requirements.yml
