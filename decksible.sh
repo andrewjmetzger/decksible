@@ -83,6 +83,3 @@ ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml
 # ansible-playbook install-deckbrew.yml
 
-curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sh
-
-
