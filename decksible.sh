@@ -47,30 +47,31 @@ collections:
     version: 4.8.1
 " >requirements.yml
 
-echo "---
-- name: Add the flathub flatpak repository remote to the user installation
+echo "
+---
+- name: Install flatpaks from flathub
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+  - name: Add the flathub flatpak repository remote to the user installation
   community.general.flatpak_remote:
     name: flathub
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
     method: user
 
-- name: Install flatpaks from flathub
-  hosts: localhost
-  gather_facts: no
-
-  tasks:
-    - name: installing flatpak list
-      community.general.flatpak:
-        name:
-          - com.github.tchx84.Flatseal
-          - net.davidotek.pupgui2
-          - net.lutris.lutris
-          - io.github.phillipk.boilr
-          - com.bitwarden.desktop
-        state: present
-        method: user
-        remote: flathub
+  - name: installing flatpak list
+    community.general.flatpak:
+    name:
+      - com.github.tchx84.Flatseal
+      - net.davidotek.pupgui2
+      - net.lutris.lutris
+      - io.github.phillipk.boilr
+      - com.bitwarden.desktop
+    state: present
+    method: user
+    remote: flathub
 " > install-flatpaks.yml
 
 echo "---
@@ -79,9 +80,9 @@ echo "---
   gather_facts: no
 
   tasks:
-    - name: Run command to install Deckbrew
-    command: \"curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sh\"
-" >install-deckbrew.yml
+  - name: Run command to install Deckbrew
+    shell: curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sudo sh
+" > install-deckbrew.yml
 
 ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml
