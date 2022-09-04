@@ -65,6 +65,7 @@ echo "---
           - com.bitwarden.desktop
         state: present
         method: user
+        remote: flathub
 " > install-flatpaks.yml
 
 echo "---
