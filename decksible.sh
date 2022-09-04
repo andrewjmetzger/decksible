@@ -55,11 +55,11 @@ echo "
 
   tasks:
   - name: Add the flathub flatpak repository remote to the user installation
-  community.general.flatpak_remote:
-    name: flathub
-    state: present
-    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-    method: user
+    community.general.flatpak_remote:
+      name: flathub
+      state: present
+      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      method: user
 
   - name: installing flatpak list
     community.general.flatpak:
@@ -88,6 +88,4 @@ ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml
 # ansible-playbook install-deckbrew.yml
 
-curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sh
-
-
+# curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sh
