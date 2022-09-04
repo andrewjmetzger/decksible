@@ -63,7 +63,9 @@ echo "
 
   - name: Installing Flatseal
     community.general.flatpak:
-      name: com.github.tchx84.Flatseal
+      name: 
+        - com.github.tchx84.Flatseal
+        - net.davidotek.pupgui2
       state: present
       method: user
       remote: flathub
