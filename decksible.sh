@@ -80,15 +80,14 @@ echo "
 
   echo "---
   - name: Install Deckbrew Beta
-    hosts: localhost
-    gather_facts: no
+  hosts: localhost
+  gather_facts: no
 
-    tasks:
-    - name: Run shell command to install Deckbrew
-      become: yes
-      shell: curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sh
+  tasks:
+  - name: Run command to install Deckbrew
+    shell: curl -L 'https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh' | sudo sh
 " > install-deckbrew.yml
 
 ansible-galaxy install -r requirements.yml
-ansible-playbook install-flatpaks.yml --ask-pass
-ansible-playbook install-deckbrew.yml --ask-pass
+ansible-playbook install-flatpaks.yml --ask-become-pass
+ansible-playbook install-deckbrew.yml --ask-become-pass
