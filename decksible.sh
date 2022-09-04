@@ -80,6 +80,6 @@ echo "
 " > install-deckbrew.yml
 
 ansible-galaxy install -r requirements.yml
-ansible-playbook install-flatpaks.yml
-# ansible-playbook install-deckbrew.yml
+ansible-playbook install-flatpaks.yml --ask-become-pass
+# ansible-playbook install-deckbrew.yml --ask-become-pass
 
