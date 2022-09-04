@@ -28,15 +28,19 @@ workingdir="${sdcard}/playbooks/software-installs"
 # Ansible
 echo -e "Installing Ansible"
 
+export PATH=/home/deck/.local/bin/:$PATH
+# echo "export PATH=/home/deck/.local/bin/:$PATH" >> ~/.bash_profile
+# source ~/.bash_profile
+
 python -m ensurepip --update
-~/.local/bin/pip3 install ansible-core
+python -m pip install --upgrade pip
+pip3 install ansible-core
 
 mkdir "${rsyncdir}"
 mkdir -p "${workingdir}/collections"
 cd "$workingdir" || exit
 
-echo "export PATH=/home/deck/.local/bin/:$PATH" >> ~/.bash_profile
-source ~/.bash_profile
+
 
 echo "[defaults]
 collections_paths = ./collections/
@@ -62,17 +66,10 @@ echo "
       state: present
       method: user
   
-  - name: Installing Flatseal
-    community.general.flatpak:
-      name: 
-        - com.github.tchx84.Flatseal
-        - net.davidotek.pupgui2
-      state: present
-      method: user
-      remote: flathub
-  - name: Installing Other Flatpaks
+  - name: Installing Flatpaks
     community.general.flatpak:
       name:
+        - com.github.tchx84.Flatseal
         - net.davidotek.pupgui2
         - net.lutris.lutris
         - io.github.phillipk.boilr
@@ -92,5 +89,5 @@ echo "
 " > install-deckbrew.yml
 
 ansible-galaxy install -r requirements.yml
-ansible-playbook install-flatpaks.yml --ask-become-pass
-# ansible-playbook install-deckbrew.yml --ask-become-pass
+ansible-playbook install-flatpaks.yml --ask-pass
+ansible-playbook install-deckbrew.yml --ask-pass
