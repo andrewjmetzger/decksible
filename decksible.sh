@@ -25,6 +25,9 @@ rsyncdir="${sdcard}/rsync-backups"
 workingdir="${sdcard}/playbooks/software-installs"
 ################################################################################
 
+echo "requesting sudo credentials for cache"
+sudo echo "" > /dev/null
+
 # Ansible
 echo -e "Installing Ansible"
 
@@ -100,3 +103,4 @@ echo "
 ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml
 ansible-playbook install-deckbrew.yml --ask-become-pass
+sudo steamos-reboot
