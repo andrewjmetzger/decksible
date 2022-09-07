@@ -25,8 +25,10 @@ rsyncdir="${sdcard}/rsync-backups"
 workingdir="${sdcard}/playbooks/software-installs"
 ################################################################################
 
+
 echo "requesting sudo credentials for cache"
 sudo echo "" > /dev/null
+
 
 # Ansible
 echo -e "Installing Ansible"
@@ -44,7 +46,6 @@ mkdir -p "${workingdir}/collections"
 cd "$workingdir" || exit
 
 
-
 echo "[defaults]
 collections_paths = ./collections/
 " >ansible.cfg
@@ -55,50 +56,6 @@ collections:
     version: 4.8.1
 " >requirements.yml
 
-echo "
----
-- name: Install flatpaks from flathub
-  hosts: localhost
-  gather_facts: no
-
-  tasks:
-  - name: Add the flathub flatpak repository remote to the user installation
-    community.general.flatpak_remote:
-      name: flathub
-      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      state: present
-      method: user
-  
-  - name: Installing Flatpaks
-    community.general.flatpak:
-      name:
-        - com.github.tchx84.Flatseal
-        - net.davidotek.pupgui2
-        - net.lutris.lutris
-        - io.github.phillipk.boilr
-      state: present
-      method: user
-      remote: flathub
-  " > install-flatpaks.yml
-
-echo "
----
-- name: Install Deckbrew
-  hosts: localhost
-  gather_facts: no
-
-  tasks:
-  - name: Download Beta Installer
-    get_url:
-      url: \"https://github.com/SteamDeckHomebrew/decky-loader/raw/main/dist/install_prerelease.sh\"
-      dest: ./install_prerelease.sh
-      mode: u+rwx
-  
-  - name: Run Beta Installer
-    shell: ./install_prerelease.sh
-    become: yes
-
-" > install-deckbrew.yml
 
 ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml
