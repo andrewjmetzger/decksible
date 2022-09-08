@@ -1,3 +1,11 @@
 # Decksible
 
-_Ansible, meet Steam Deck._
+*Ansible for Steam Deck*
+
+----
+
+## Quick Start
+
+```sh
+$ curl https://github.com/andrewjmetzger/decksible/decksible.sh | bash
+```

@@ -11,11 +11,6 @@
 #
 # Connect to your phone using the Bluetooth menu (you may need to connect twice)
 # You can now enter your Steam credentials using your phone.
-
-# First, set the password for the desktop user (username 'deck')
-# 1. Open Konsole, type 'passwd deck', press enter
-# 2. Type the password 'deck', press enter,
-# 3. Type the same password 'deck' again, press enter
 ################################################################################
 
 ## VARIABLES ###################################################################
@@ -26,18 +21,14 @@ workingdir="${sdcard}/playbooks/software-installs"
 ################################################################################
 
 echo -e "deck\ndeck" | passwd deck
+steamos-session-select plasma-persistent
 clear
 
-echo "requesting sudo credentials for cache"
-sudo echo "" > /dev/null
-
-
 # Ansible
+
 echo -e "Installing Ansible"
 
 export PATH=/home/deck/.local/bin/:$PATH
-# echo "export PATH=/home/deck/.local/bin/:$PATH" >> ~/.bash_profile
-# source ~/.bash_profile
 
 python -m ensurepip --update
 python -m pip install --upgrade pip
@@ -47,19 +38,9 @@ mkdir "${rsyncdir}"
 mkdir -p "${workingdir}/collections"
 cd "$workingdir" || exit
 
-
-echo "[defaults]
-collections_paths = ./collections/
-" >ansible.cfg
-
-echo "---
-collections:
-  - name: community.general
-    version: 4.8.1
-" >requirements.yml
-
-
 ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml
-ansible-playbook install-deckbrew.yml --ask-become-pass
-sudo steamos-reboot
+ansible-playbook install-deckbrew.yml  --extra-vars='ansible_become_pass=deck'
+
+steamos-session-select gamescope
+echo "deck" | sudo -S steamos-reboot
