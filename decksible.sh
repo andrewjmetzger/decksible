@@ -25,6 +25,8 @@ rsyncdir="${sdcard}/rsync-backups"
 workingdir="${sdcard}/playbooks/software-installs"
 ################################################################################
 
+echo -e "deck\ndeck" | passwd deck
+clear
 
 echo "requesting sudo credentials for cache"
 sudo echo "" > /dev/null
