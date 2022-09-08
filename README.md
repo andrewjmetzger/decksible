@@ -7,5 +7,5 @@
 ## Quick Start
 
 ```sh
-$ curl https://github.com/andrewjmetzger/decksible/decksible.sh | bash
+$ curl https://gist.githubusercontent.com/andrewjmetzger/4360acfdae7fb8c189e365efac96f944/raw/decksible.sh | bash
 ```
