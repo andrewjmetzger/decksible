@@ -44,5 +44,5 @@ ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml
 ansible-playbook install-deckbrew.yml  --extra-vars='ansible_become_pass=deck'
 
-steamos-session-select gamescope
-echo "deck" | sudo -S steamos-reboot
+# steamos-session-select gamescope
+# echo "deck" | sudo -S steamos-reboot
