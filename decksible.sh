@@ -30,7 +30,7 @@ echo -e "Installing Ansible"
 
 export PATH=/home/deck/.local/bin/:$PATH
 
-python -m ensurepip --update
+python -m ensurepip
 python -m pip install --upgrade pip
 pip3 install ansible-core
 
