@@ -38,6 +38,8 @@ mkdir "${rsyncdir}"
 mkdir -p "${workingdir}/collections"
 cd "$workingdir" || exit
 
+pip install --user git+https://github.com/berenm/steam-cli@python
+
 ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml
 ansible-playbook install-deckbrew.yml  --extra-vars='ansible_become_pass=deck'
