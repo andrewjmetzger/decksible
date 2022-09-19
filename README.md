@@ -7,5 +7,5 @@
 ## Quick Start
 
 ```sh
-curl https://wget.lol/decksible.sh | bash
+curl -sSL https://wget.lol/decksible.sh | bash
 ```

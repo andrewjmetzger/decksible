@@ -21,7 +21,7 @@ workingdir="${sdcard}/playbooks/software-installs"
 ################################################################################
 
 echo -e "deck\ndeck" | passwd deck
-# steamos-session-select plasma-persistent
+echo "deck" | sudo -S systemctl enable sshd.service --now
 clear
 
 # Ansible
@@ -38,11 +38,8 @@ mkdir "${rsyncdir}"
 mkdir -p "${workingdir}/collections"
 cd "$workingdir" || exit
 
-pip install --user git+https://github.com/berenm/steam-cli@python
-
 ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml
 ansible-playbook install-deckbrew.yml  --extra-vars='ansible_become_pass=deck'
 
-# steamos-session-select gamescope
-# echo "deck" | sudo -S steamos-reboot
+echo "deck" | steamos-session-select gamescope
