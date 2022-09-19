@@ -1,6 +1,6 @@
 #!/bin/bash
 
-################################################################################
+## SETUP ######################################################################
 # This script can be used prior to Steam Deck initial login in Game mode
 # Hold [POWER] and select [Switch to desktop]
 #

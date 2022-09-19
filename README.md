@@ -2,8 +2,6 @@
 
 *Ansible for Steam Deck*
 
-----
-
 ## Quick Start
 
 ```sh
