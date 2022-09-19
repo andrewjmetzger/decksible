@@ -21,7 +21,7 @@ workingdir="${sdcard}/playbooks/software-installs"
 ################################################################################
 
 echo -e "deck\ndeck" | passwd deck
-steamos-session-select plasma-persistent
+# steamos-session-select plasma-persistent
 clear
 
 # Ansible
