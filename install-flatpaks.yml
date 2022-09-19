@@ -14,6 +14,6 @@
         - net.retrodeck.retrodeck                                                                                                                                                                               
         - io.github.phillipk.boilr
       state: present
-      method: user
+      method: system
       remote: flathub
 ...
