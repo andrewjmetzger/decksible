@@ -17,20 +17,18 @@
 # SD Card Path under /run/media (usually mmcblk0p1)
 sdcard="/run/media/mmcblk0p1"
 rsyncdir="${sdcard}/rsync-backups"
-workingdir="${sdcard}/playbooks/software-installs"
+workingdir="${sdcard}/decksible/playbooks/software-installs"
 repo="https://gist.github.com/4360acfdae7fb8c189e365efac96f944.git" 
 repodest="${sdcard}/decksible"
 ################################################################################
 
 
 
-if ! git clone "${repo}" "${repodest}" 2>/dev/null && [ -d "${repodest}" ] ; then
+if ! git clone"${repo}" "${repodest}" 2>/dev/null && [ -d "${repodest}" ] ; then
     echo "Clone failed because the folder ${repodest} exists"
     echo "Pulling changes, please wait ..."
     cd "${repodest}" && git pull --force
 fi
-
-sleep 3
 
 echo -e "deck\ndeck" | passwd deck
 echo "deck" | sudo -S systemctl enable sshd.service --now
