@@ -27,7 +27,7 @@ repodest="${sdcard}/decksible"
 if ! git clone "${repo}" "${repodest}" 2>/dev/null && [ -d "${repodest}" ] ; then
     echo "Clone failed because the folder ${repodest} exists"
     echo "Pulling changes, please wait ..."
-    git pull -C "${repo}"
+    cd "${repodest}" && git pull --force
 fi
 
 sleep 999
