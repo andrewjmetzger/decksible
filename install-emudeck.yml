@@ -3,14 +3,14 @@
   hosts: localhost
   gather_facts: no
 
-tasks:
-  - name: Download EmuDeck Installer
-    get_url:
-      url: "https://www.emudeck.com/EmuDeck.desktop"
-      dest: /home/deck/Desktop/EmuDeck.desktop
-      mode: u+rwx
+  tasks:
+    - name: Download EmuDeck Installer
+      get_url:
+        url: "https://www.emudeck.com/EmuDeck.desktop"
+        dest: /home/deck/Desktop/EmuDeck.desktop
+        mode: u+rwx
 
-  - name: Run EmuDeck Installer
-    shell: /home/deck/Desktop/EmuDeck.desktop
-    become: no
+    - name: Run EmuDeck Installer
+      shell: /home/deck/Desktop/EmuDeck.desktop
+      become: no
 ...
