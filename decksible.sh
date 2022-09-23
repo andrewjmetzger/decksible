@@ -30,6 +30,8 @@ if ! git clone "${repo}" "${repodest}" 2>/dev/null && [ -d "${repodest}" ] ; the
     git pull -C "${repo}"
 fi
 
+sleep 999
+
 echo -e "deck\ndeck" | passwd deck
 echo "deck" | sudo -S systemctl enable sshd.service --now
 clear
@@ -54,4 +56,4 @@ ansible-playbook install-flatpaks.yml
 ansible-playbook install-deckbrew.yml --extra-vars='ansible_become_pass=deck'
 ansible-playbook install-emudeck.yml --extra-vars='ansible_become_pass=deck'
 
-echo "deck" | steamos-session-select gamescope
+# echo "deck" | steamos-session-select gamescope
