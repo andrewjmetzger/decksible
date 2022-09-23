@@ -6,7 +6,7 @@
 tasks:
   - name: Download EmuDeck Installer
     get_url:
-      url: \"https://www.emudeck.com/EmuDeck.desktop\"
+      url: "https://www.emudeck.com/EmuDeck.desktop"
       dest: /home/deck/Desktop/EmuDeck.desktop
       mode: u+rwx
 
