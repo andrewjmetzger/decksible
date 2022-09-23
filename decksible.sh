@@ -24,13 +24,8 @@ repodest="${sdcard}/decksible"
 ################################################################################
 
 
-git clone "${repo}" "${repodest}" 2>/dev/null 
-
-if ! git clone "${repo}" "${repodest}" 2>/dev/null && [ -d "${repodest}" ] ; then
-    echo "Clone failed because the folder ${repodest} exists"
-    echo "Pulling changes, please wait ..."
-    cd "${repodest}" && git pull --force
-fi
+git clone "${repo}" "${repodest}"
+cd "${repodest}" && git pull --force
 
 echo -e "deck\ndeck" | passwd deck
 echo "deck" | sudo -S systemctl enable sshd.service --now
