@@ -10,7 +10,7 @@
         dest: "/home/deck/Desktop/EmuDeck.desktop"
         mode: u+rwx
 
-    - name: Run EmuDeck Installer
-      shell: gtk-launch "/home/deck/Desktop/EmuDeck.desktop"
+    - name: Install EmuDeck to SD Card (Easy Mode)
+      shell: curl https://raw.githubusercontent.com/dragoonDorise/EmuDeck/main/install.sh | bash -s -- SD zenity=false expert=false
       become: no
 ...
