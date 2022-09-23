@@ -30,7 +30,7 @@ if ! git clone "${repo}" "${repodest}" 2>/dev/null && [ -d "${repodest}" ] ; the
     cd "${repodest}" && git pull --force
 fi
 
-sleep 999
+sleep 3
 
 echo -e "deck\ndeck" | passwd deck
 echo "deck" | sudo -S systemctl enable sshd.service --now
