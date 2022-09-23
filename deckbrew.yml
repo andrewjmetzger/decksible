@@ -14,3 +14,5 @@
     shell: ./install_prerelease.sh
     become: yes
 ...
+
+https://www.emudeck.com/EmuDeck.desktop
