@@ -18,7 +18,17 @@
 sdcard="/run/media/mmcblk0p1"
 rsyncdir="${sdcard}/rsync-backups"
 workingdir="${sdcard}/playbooks/software-installs"
+repo="https://gist.github.com/4360acfdae7fb8c189e365efac96f944.git" 
+repodest="${sdcard}/decksible"
 ################################################################################
+
+
+
+if ! git clone "${repo}" "${repodest}" 2>/dev/null && [ -d "${repodest}" ] ; then
+    echo "Clone failed because the folder ${repodest} exists"
+    echo "Pulling changes, please wait ..."
+    git pull -C "${repo}"
+fi
 
 echo -e "deck\ndeck" | passwd deck
 echo "deck" | sudo -S systemctl enable sshd.service --now
@@ -39,6 +49,7 @@ mkdir -p "${workingdir}/collections"
 cd "$workingdir" || exit
 
 ansible-galaxy install -r requirements.yml
+
 ansible-playbook install-flatpaks.yml
 ansible-playbook install-deckbrew.yml --extra-vars='ansible_become_pass=deck'
 ansible-playbook install-emudeck.yml --extra-vars='ansible_become_pass=deck'

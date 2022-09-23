@@ -1,5 +1,5 @@
 ---
-- name: Install Proton Game Compatibility Tools
+- name: Install Discover Flatpaks
   hosts: localhost
   gather_facts: no
 
