@@ -11,6 +11,6 @@
         mode: u+rwx
 
     - name: Install EmuDeck to SD Card (Easy Mode)
-      shell: curl https://raw.githubusercontent.com/dragoonDorise/EmuDeck/main/install.sh | bash -s -- SD zenity=false expert=false
+      shell: curl https://raw.githubusercontent.com/dragoonDorise/EmuDeck/main/install.sh | bash -s -- SD zenity=true expert=false
       become: no
 ...
