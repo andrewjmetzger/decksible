@@ -1,0 +1,16 @@
+---
+- name: Install Decky Loader
+  hosts: localhost
+  gather_facts: no
+  
+  tasks:
+  - name: Download Installer
+    get_url:
+      url: "https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/download/install_release.sh"
+      dest: ./install_release.sh
+      mode: u+rwx
+
+  - name: Run Installer
+    shell: ./install_release.sh
+    become: yes
+...
