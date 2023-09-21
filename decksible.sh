@@ -11,10 +11,12 @@
 ## VARIABLES ###################################################################
 # SD Card Path under /run/media (usually mmcblk0p1)
 sdcard="/run/media/mmcblk0p1"
+
 rsyncdir="${sdcard}/rsync-backups"
 workingdir="${sdcard}/decksible"
+
 # Version Control
-repo="https://gist.github.com/4360acfdae7fb8c189e365efac96f944.git" 
+repo="https://raw.githubusercontent.com/andrewjmetzger/decksible/main/decksible.sh" 
 repodest="${sdcard}/decksible"
 ################################################################################
 
