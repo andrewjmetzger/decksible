@@ -17,12 +17,12 @@
         mode: u+rwx
     - name: Create BIOS directory if it does not exist
       ansible.builtin.file:
-        path: "/run/media/mmcblk0p1/Emulation/bios/"
+        path: "/run/media/mmcblk0p1/Emulation/"
         state: directory
         mode: "0755"
     - name: Download and extract BIOS Pack
       ansible.builtin.unarchive:
         src: "https://github.com/Abdess/retroarch_system/releases/download/v20220308/351ELEC-20211122-BIOS.zip"
-        dest: "/run/media/mmcblk0p1/Emulation/bios/"
+        dest: "/run/media/mmcblk0p1/Emulation/"
         remote_src: yes
 ...
