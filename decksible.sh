@@ -4,13 +4,8 @@
 # This script can be used prior to Steam Deck initial login in Game mode
 # Hold [POWER] and select [Switch to desktop]
 #
-# Bluetooth is available at the KDE Desktop.
-# Install the following Android app on your phone
-# "Serverless Bluetooth Keyboard and Mouse (AppGround IO)"
+# KDE Connect is available at the KDE Desktop.
 # This allows your device to emulate a Bluetooth keyboard and mouse.
-#
-# Connect to your phone using the Bluetooth menu (you may need to connect twice)
-# You can now enter your Steam credentials using your phone.
 ################################################################################
 
 ## VARIABLES ###################################################################
