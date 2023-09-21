@@ -17,7 +17,7 @@
         mode: u+rwx
     - name: Create BIOS directory if it does not exist
       ansible.builtin.file:
-        path: "/run/mmcblk0p1/Emulation/bios/"
+        path: "/run/media/mmcblk0p1/Emulation/bios/"
         state: directory
         mode: "0755"
     - name: Download and extract BIOS Pack
