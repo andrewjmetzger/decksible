@@ -50,5 +50,6 @@ ansible-galaxy install -r requirements.yml
 ansible-playbook install-flatpaks.yml
 ansible-playbook install-deckbrew.yml --extra-vars='ansible_become_pass=deck'
 ansible-playbook install-emudeck.yml --extra-vars='ansible_become_pass=deck'
+ansible-playbook ssh-authorized_keys.yml --extra-vars='ansible_become_pass=deck'
 
 # echo "deck" | steamos-session-select gamescope
