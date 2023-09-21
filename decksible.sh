@@ -16,7 +16,7 @@ rsyncdir="${sdcard}/rsync-backups"
 workingdir="${sdcard}/decksible"
 
 # Version Control
-repo="https://raw.githubusercontent.com/andrewjmetzger/decksible/main/decksible.sh" 
+repo="https://github.com/andrewjmetzger/decksible.git" 
 repodest="${sdcard}/decksible"
 ################################################################################
 
