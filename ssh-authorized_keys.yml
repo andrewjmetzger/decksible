@@ -4,8 +4,8 @@
   gather_facts: no
 
 tasks:
-  - name: Set ~/.ssh/authorized_keys from GitHub public keys
+  - name: Set authorized_keys from GitHub public keys
     ansible.posix.authorized_key:
       state: present
-      key: "{{ lookup('url', 'https://github.com/andrewjmetzger.keys', split_lines=False) }}"
+      key: "https://github.com/andrewjmetzger.keys"
 ...
