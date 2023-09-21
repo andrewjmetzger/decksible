@@ -3,9 +3,9 @@
   hosts: localhost
   gather_facts: no
 
-tasks:
-  - name: Set authorized_keys from GitHub public keys
-    ansible.posix.authorized_key:
-      state: present
-      key: "https://github.com/andrewjmetzger.keys"
+  tasks:
+    - name: Set authorized_keys from GitHub public keys
+      ansible.posix.authorized_key:
+        state: present
+        key: "https://github.com/andrewjmetzger.keys"
 ...
