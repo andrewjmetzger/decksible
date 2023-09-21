@@ -1,0 +1,11 @@
+---
+- name: Add SSH authorized_keys from the list of public keys on GitHub.com
+  hosts: localhost
+  gather_facts: no
+
+tasks:
+  - name: Set ~/.ssh/authorized_keys from GitHub public keys
+    ansible.posix.authorized_key:
+      state: present
+      key: "{{ lookup('url', 'https://github.com/andrewjmetzger.keys', split_lines=False) }}"
+...
