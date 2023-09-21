@@ -4,12 +4,17 @@
   gather_facts: no
 
   tasks:
+  - name: Add the flathub flatpak repository remote to the user installation
+    flatpak_remote:
+      name: flathub
+      state: present
+      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      method: user
   - name: Installing Flatpaks
     community.general.flatpak:
       name:
         - com.github.tchx84.Flatseal
         - net.lutris.lutris
-        
       state: present
       method: user
       remote: flathub
