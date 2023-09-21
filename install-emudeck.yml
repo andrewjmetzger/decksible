@@ -4,13 +4,25 @@
   gather_facts: no
 
   tasks:
-    - name: Download EmuDeck Installer
+    - name: Download EmuDeck Desktop File
       get_url:
         url: "https://www.emudeck.com/EmuDeck.desktop"
         dest: "/home/deck/Desktop/EmuDeck.desktop"
         mode: u+rwx
 
-    - name: Install EmuDeck to SD Card (Easy Mode)
-      shell: curl https://raw.githubusercontent.com/dragoonDorise/EmuDeck/main/install.sh | bash -s -- SD zenity=true expert=false
+    - name: Download EmuDeck Installer
+      get_url: 
+        url: "https://raw.githubusercontent.com/dragoonDorise/EmuDeck/main/install.sh"
+        dest: "/home/deck/Desktop/install.sh"
+        mode: u+rwx
+        
+    - name: Install EmuDeck, PowerTools, and Gyroscope conrols to SD Card 
+      shell: > 
+        ./install.sh -s --
+        SD 
+        zenity=true 
+        expert=true 
+        doInstallPowertools=true 
+        doInstallGyro=true 
       become: no
 ...
