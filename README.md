@@ -8,7 +8,7 @@ Requires an SD card. Temporarily enables/uses sudo.
 # Quick Start
 
 ```sh
-curl -sSL https://wget.lol/decksible.sh | sh
+curl -sSL https://wget.lol/decksible | sh
 ```
 
 # Tasks and Features
