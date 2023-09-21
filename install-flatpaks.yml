@@ -7,11 +7,9 @@
   - name: Installing Flatpaks
     community.general.flatpak:
       name:
-        - org.mozilla.firefox
         - com.github.tchx84.Flatseal
-        - net.davidotek.pupgui2
         - net.lutris.lutris
-        - io.github.phillipk.boilr
+        
       state: present
       method: user
       remote: flathub
