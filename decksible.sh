@@ -31,7 +31,7 @@ if ! [ -d .venv ]; then
     python3 -m venv .venv
 fi
 
-source .venv/bin/activate
+source ./.venv/bin/activate
 
 
 # Ansible
@@ -40,7 +40,7 @@ echo -e "Installing Ansible"
 
 export PATH=/home/deck/.local/bin/:$PATH
 
-pip3 install ansible-core 
+./.venv/bin/pip3 install ansible-core 
 
 mkdir -p "${decksible_path}/collections"
 cd "${decksible_path}" || exit
