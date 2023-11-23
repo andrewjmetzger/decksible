@@ -7,6 +7,8 @@
     - name: Set authorized_keys from GitHub public keys
       ansible.posix.authorized_key:
         state: present
+        # Do not overwrite existing authorized_keys
+        exclusive: false 
         user: deck
         key: "https://github.com/andrewjmetzger.keys"
 ...
