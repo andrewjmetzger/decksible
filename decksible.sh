@@ -9,23 +9,30 @@
 ################################################################################
 
 ## VARIABLES ###################################################################
-# SD Card Path under /run/media (usually mmcblk0p1)
-sdcard="/run/media/mmcblk0p1"
+# Either SD Card (usually /run/media/mmcblk0p1), or $HOME (on SSD)
+sdcard="$HOME"
+decksible_path="${sdcard}/.decksible"
 
-workingdir="${sdcard}/decksible"
+mkdir -p "${decksible_path}"
 
 # Version Control
 repo="https://github.com/andrewjmetzger/decksible.git" 
-repodest="${sdcard}/decksible"
 ################################################################################
 
 
-git clone "${repo}" "${repodest}"
-cd "${repodest}" && git pull --force
+git clone "${repo}" "${decksible_path}"
+cd "${decksible_path}" && git pull --force
 
 echo -e "deck\ndeck" | passwd deck
 echo "deck" | sudo -S systemctl enable sshd.service --now
 clear
+
+if ! [ -d .venv ]; then
+    python3 -m venv .venv
+fi
+
+source .venv/bin/activate
+
 
 # Ansible
 
@@ -33,12 +40,10 @@ echo -e "Installing Ansible"
 
 export PATH=/home/deck/.local/bin/:$PATH
 
-python -m ensurepip --user
-python -m pip install --upgrade pip --user
-pip3 install ansible-core --user
+pip3 install ansible-core 
 
-mkdir -p "${workingdir}/collections"
-cd "$workingdir" || exit
+mkdir -p "${decksible_path}/collections"
+cd "${decksible_path}" || exit
 
 ansible-galaxy install -r requirements.yml
 
@@ -47,4 +52,7 @@ ansible-playbook install-decky-loader.yml --extra-vars='ansible_become_pass=deck
 ansible-playbook install-emudeck.yml --extra-vars='ansible_become_pass=deck'
 ansible-playbook ssh-authorized_keys.yml --extra-vars='ansible_become_pass=deck'
 
+deactivate
+
 # echo "deck" | steamos-session-select gamescope
+
