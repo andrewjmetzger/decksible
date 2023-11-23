@@ -12,7 +12,6 @@
 # SD Card Path under /run/media (usually mmcblk0p1)
 sdcard="/run/media/mmcblk0p1"
 
-rsyncdir="${sdcard}/rsync-backups"
 workingdir="${sdcard}/decksible"
 
 # Version Control
@@ -38,7 +37,6 @@ python -m ensurepip
 python -m pip install --upgrade pip
 pip3 install ansible-core
 
-mkdir "${rsyncdir}"
 mkdir -p "${workingdir}/collections"
 cd "$workingdir" || exit
 
