@@ -33,9 +33,9 @@ echo -e "Installing Ansible"
 
 export PATH=/home/deck/.local/bin/:$PATH
 
-python -m ensurepip
-python -m pip install --upgrade pip
-pip3 install ansible-core
+python -m ensurepip --user
+python -m pip install --upgrade pip --user
+pip3 install ansible-core --user
 
 mkdir -p "${workingdir}/collections"
 cd "$workingdir" || exit
