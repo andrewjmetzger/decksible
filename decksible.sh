@@ -20,12 +20,14 @@ mkdir -p "${decksible_path}"
 repo="https://github.com/andrewjmetzger/decksible.git" 
 ################################################################################
 
+export PATH=/home/deck/.local/bin/:$PATH
 
 git clone "${repo}" "${decksible_path}"
 cd "${decksible_path}" && git pull --force
 
 echo -e "deck\ndeck" | passwd deck
 echo "deck" | sudo -S systemctl enable sshd.service --now
+
 clear
 
 if ! [ -d ${decksible_path}/.venv ]; then
@@ -34,23 +36,16 @@ fi
 
 source ${decksible_path}/.venv/bin/activate
 
-
-# Ansible
-
 echo -e "Installing Ansible"
-
-export PATH=/home/deck/.local/bin/:$PATH
-
 ${decksible_path}/.venv/bin/pip3 install ansible-core 
 
 mkdir -p "${decksible_path}/collections"
 cd "${decksible_path}" || exit
 
 ansible-galaxy install -r ${decksible_path}/requirements.yml
-
 ansible-playbook ${decksible_path}/playbooks/main.yml --extra-vars='ansible_become_pass=deck'
 
-# We are done! Change wallpaper to indicate success
+deactivate
 
 kwriteconfig5 --file "/home/deck/.config/plasma-org.kde.plasma.desktop-appletsrc" \
 --group 'Containments' --group '1' --group 'Wallpaper' \
@@ -58,7 +53,9 @@ kwriteconfig5 --file "/home/deck/.config/plasma-org.kde.plasma.desktop-appletsrc
 "/usr/share/wallpapers/Steam Deck Logo 5.jpg" \
 && echo "deck" | steamos-session-select plasma
 
-deactivate
+echo -e "DONE: Steam Deck is configured!"
+echo -e "You may now run EmuDeck setup, or return to Gamesope mode."
 
+# Session switch commands
 # echo "deck" | steamos-session-select gamescope
-
+# echo "deck" | steamos-session-select plasma
