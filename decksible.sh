@@ -48,10 +48,7 @@ cd "${decksible_path}" || exit
 
 ansible-galaxy install -r ${decksible_path}/requirements.yml
 
-ansible-playbook ${decksible_path}/playbooks/configure-ssh.yml --extra-vars='ansible_become_pass=deck'
-ansible-playbook ${decksible_path}/playbooks/install-flatpaks.yml
-ansible-playbook ${decksible_path}/playbooks/install-decky-loader.yml --extra-vars='ansible_become_pass=deck'
-ansible-playbook ${decksible_path}/playbooks/install-emudeck.yml --extra-vars='ansible_become_pass=deck'
+ansible-playbook ${decksible_path}/playbooks/main.yml --extra-vars='ansible_become_pass=deck'
 
 # We are done! Change wallpaper to indicate success
 

@@ -1,0 +1,10 @@
+---
+- name: Decksible Steam Deck Configurator
+  hosts: localhost
+  gather_facts: false
+
+- import_playbook: configure-ssh.yml 
+- import_playbook: install-flatpaks.yml
+- import_playbook: install-decky-loader.yml
+- import_playbook: install-emudeck.yml
+...
