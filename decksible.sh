@@ -55,12 +55,13 @@ ansible-playbook ${decksible_path}/playbooks/install-emudeck.yml --extra-vars='a
 
 # We are done! Change wallpaper to indicate success
 
-kwriteconfig5 --file "/home/deck/.config/plasma-org.kde.plasma.desktop-appletsrc" \ 
---group 'Containments' --group '1' --group 'Wallpaper' \ 
---group 'org.kde.image' --group 'General' --key 'Image' \ 
-"/usr/share/wallpapers/Steam Deck Logo 5.jpg"
+kwriteconfig5 --file "/home/deck/.config/plasma-org.kde.plasma.desktop-appletsrc" \
+--group 'Containments' --group '1' --group 'Wallpaper' \
+--group 'org.kde.image' --group 'General' --key 'Image' \
+"/usr/share/wallpapers/Steam Deck Logo 5.jpg" \
+&& echo "deck" | steamos-session-select plasma
 
 deactivate
 
-echo "deck" | steamos-session-select gamescope
+# echo "deck" | steamos-session-select gamescope
 
