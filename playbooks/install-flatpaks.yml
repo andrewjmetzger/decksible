@@ -1,5 +1,5 @@
 ---
-- name: Install Discover Flatpaks
+- name: Install Flatpaks
   hosts: localhost
   gather_facts: false
 
@@ -17,8 +17,7 @@
       method: system
       remote: flathub
       name:
+        - org.mozilla.firefox
         - com.github.tchx84.Flatseal
         - net.lutris.Lutris
-        - org.mozilla.firefox
-
 ...
