@@ -1,24 +1,24 @@
 ---
-- name: Download EmuDeck
+- name: Download Emulation BIOS pack
   hosts: localhost
   gather_facts: false
 
   tasks:
-    - name: Create BIOS directory if it does not exist
+    - name: Create destination directory if it does not exist
       ansible.builtin.file:
-        path: "{{ lookup('ansible.builtin.env', 'sdcard') }}/Emulation/"
+        path: "{{ lookup('ansible.builtin.env', 'HOME') }}/Emulation/"
         state: directory
         mode: "0755"
 
     - name: Download and extract BIOS pack
       ansible.builtin.unarchive:
         src: "https://github.com/Abdess/retroarch_system/releases/download/v20220308/351ELEC-20211122-BIOS.zip"
-        dest: "{{ lookup('ansible.builtin.env', 'sdcard') }}/Emulation/"
+        dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/Emulation/"
         remote_src: true
 
     - name: Download EmuDeck desktop shortcut
       get_url:
         url: "https://www.emudeck.com/EmuDeck.desktop"
-        dest: "/home/deck/Desktop/EmuDeck.desktop"
+        dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/Desktop/EmuDeck.desktop"
         mode: u+rwx
 ...
