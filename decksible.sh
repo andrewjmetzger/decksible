@@ -13,6 +13,7 @@
 export sdcard="$HOME"
 export decksible_path="${sdcard}/.decksible"
 
+mkdir -p "${sdcard}"
 mkdir -p "${decksible_path}"
 
 # Version Control
@@ -27,11 +28,11 @@ echo -e "deck\ndeck" | passwd deck
 echo "deck" | sudo -S systemctl enable sshd.service --now
 clear
 
-if ! [ -d .venv ]; then
-    python3 -m venv .venv
+if ! [ -d ${decksible_path}/.venv ]; then
+    python3 -m venv ${decksible_path}/.venv
 fi
 
-source ./.venv/bin/activate
+source ${decksible_path}/.venv/bin/activate
 
 
 # Ansible
@@ -40,17 +41,17 @@ echo -e "Installing Ansible"
 
 export PATH=/home/deck/.local/bin/:$PATH
 
-./.venv/bin/pip3 install ansible-core 
+${decksible_path}/.venv/bin/pip3 install ansible-core 
 
 mkdir -p "${decksible_path}/collections"
 cd "${decksible_path}" || exit
 
-ansible-galaxy install -r requirements.yml
+ansible-galaxy install -r ${decksible_path}/requirements.yml
 
-ansible-playbook install-flatpaks.yml
-ansible-playbook install-decky-loader.yml --extra-vars='ansible_become_pass=deck'
-ansible-playbook install-emudeck.yml --extra-vars='ansible_become_pass=deck'
-ansible-playbook ssh-authorized_keys.yml --extra-vars='ansible_become_pass=deck'
+ansible-playbook ${decksible_path}/ssh-authorized_keys.yml --extra-vars='ansible_become_pass=deck'
+ansible-playbook ${decksible_path}/install-flatpaks.yml
+ansible-playbook ${decksible_path}/install-decky-loader.yml --extra-vars='ansible_become_pass=deck'
+ansible-playbook ${decksible_path}/install-emudeck.yml --extra-vars='ansible_become_pass=deck'
 
 deactivate
 
