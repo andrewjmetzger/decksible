@@ -1,6 +1,7 @@
 ---
 - name: Add SSH authorized_keys from the list of public keys on GitHub.com
   hosts: localhost
+  become: true
   gather_facts: false
 
   tasks:
@@ -11,4 +12,32 @@
         exclusive: false 
         user: deck
         key: "https://github.com/andrewjmetzger.keys"
+
+    - name: Disable root login
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^PermitRootLogin'
+        line: "PermitRootLogin no"
+        state: present
+
+    - name: Disable password authentication
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^PasswordAuthentication'
+        line: "PasswordAuthentication no"
+        state: present
+
+    - name: Enable X11 forwarding
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^X11Forwarding'
+        line: "X11Forwarding yes"
+        state: present
+
+    - name: Enable SSH service
+      systemd:
+        name: sshd
+        enabled: yes
+        state: restarted
+        daemon_reload: yes
 ...

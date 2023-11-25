@@ -26,7 +26,6 @@ git clone "${repo}" "${decksible_path}"
 cd "${decksible_path}" && git pull --force
 
 echo -e "deck\ndeck" | passwd deck
-echo "deck" | sudo -S systemctl enable sshd.service --now
 
 clear
 
