@@ -53,7 +53,7 @@ kwriteconfig5 --file "/home/deck/.config/plasma-org.kde.plasma.desktop-appletsrc
 && echo "deck" | steamos-session-select plasma
 
 echo -e "DONE: Steam Deck is configured!"
-echo -e "You may now run EmuDeck setup, or return to Gamesope mode."
+echo -e "You may now run EmuDeck setup, or return to Gamescope mode."
 
 # Session switch commands
 # echo "deck" | steamos-session-select gamescope
