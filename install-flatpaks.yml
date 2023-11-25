@@ -9,13 +9,15 @@
       name: flathub
       state: present
       flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      method: user
+      method: system
+      
   - name: Installing Flatpaks
     community.general.flatpak:
       name:
         - com.github.tchx84.Flatseal
-        - net.lutris.lutris
+        - net.lutris.Lutris
+        - org.mozilla.firefox
       state: present
-      method: user
+      method: system
       remote: flathub
 ...
