@@ -4,7 +4,7 @@
   gather_facts: no
 
   tasks:
-  - name: Add the flathub flatpak repository remote to the user installation
+  - name: Add the flathub flatpak repository remote to the system installation
     flatpak_remote:
       name: flathub
       state: present
@@ -13,11 +13,12 @@
       
   - name: Installing Flatpaks
     community.general.flatpak:
+      state: present
+      method: system
+      remote: flathub
       name:
         - com.github.tchx84.Flatseal
         - net.lutris.Lutris
         - org.mozilla.firefox
-      state: present
-      method: system
-      remote: flathub
+
 ...
