@@ -1,7 +1,7 @@
 ---
 - name: Setup Decky Loader
   hosts: localhost
-  gather_facts: no
+  gather_facts: false
   
   tasks:
   - name: Download Decky Loader
@@ -12,5 +12,5 @@
 
   - name: Install Decky Loader
     shell: ./install_release.sh
-    become: yes
+    become: true
 ...

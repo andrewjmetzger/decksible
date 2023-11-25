@@ -1,7 +1,7 @@
 ---
 - name: Install Discover Flatpaks
   hosts: localhost
-  gather_facts: no
+  gather_facts: false
 
   tasks:
   - name: Add the flathub flatpak repository remote to the system installation
