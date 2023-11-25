@@ -53,7 +53,14 @@ ansible-playbook ${decksible_path}/playbooks/install-flatpaks.yml
 ansible-playbook ${decksible_path}/playbooks/install-decky-loader.yml --extra-vars='ansible_become_pass=deck'
 ansible-playbook ${decksible_path}/playbooks/install-emudeck.yml --extra-vars='ansible_become_pass=deck'
 
+# We are done! Change wallpaper to indicate success
+
+kwriteconfig5 --file "/home/deck/.config/plasma-org.kde.plasma.desktop-appletsrc" \ 
+--group 'Containments' --group '1' --group 'Wallpaper' \ 
+--group 'org.kde.image' --group 'General' --key 'Image' \ 
+"/usr/share/wallpapers/Steam Deck Logo 5.jpg"
+
 deactivate
 
-# echo "deck" | steamos-session-select gamescope
+echo "deck" | steamos-session-select gamescope
 
