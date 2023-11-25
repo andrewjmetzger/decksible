@@ -6,6 +6,7 @@
 
   tasks:
     - name: Set authorized_keys from GitHub public keys
+      become: false
       ansible.posix.authorized_key:
         state: present
         # Do not overwrite existing authorized_keys
