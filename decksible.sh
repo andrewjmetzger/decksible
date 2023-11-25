@@ -10,8 +10,8 @@
 
 ## VARIABLES ###################################################################
 # Either SD Card (usually /run/media/mmcblk0p1), or $HOME (on SSD)
-sdcard="$HOME"
-decksible_path="${sdcard}/.decksible"
+export sdcard="$HOME"
+export decksible_path="${sdcard}/.decksible"
 
 mkdir -p "${decksible_path}"
 
